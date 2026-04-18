@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دليل المشارك — المنصة الهجينة</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap');
+  
+  :root {
+    --primary: #1a56db;
+    --primary-light: #e8f0fe;
+    --accent: #f59e0b;
+    --accent-light: #fef3c7;
+    --success: #10b981;
+    --success-light: #d1fae5;
+    --purple: #7c3aed;
+    --purple-light: #ede9fe;
+    --rose: #f43f5e;
+    --rose-light: #ffe4e6;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --radius: 16px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Tajawal', sans-serif;
+    background: var(--gray-50);
+    color: var(--gray-900);
+    line-height: 1.8;
+    padding: 20px;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, var(--primary) 0%, #3b82f6 50%, var(--purple) 100%);
+    border-radius: var(--radius);
+    padding: 40px 32px;
+    text-align: center;
+    color: white;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+    animation: pulse 4s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+  }
+
+  .header h1 {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    position: relative;
+  }
+
+  .header p {
+    font-size: 16px;
+    font-weight: 300;
+    opacity: 0.9;
+    position: relative;
+  }
+
+  .header .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    border-radius: 100px;
+    padding: 6px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 16px;
+    backdrop-filter: blur(4px);
+    position: relative;
+  }
+
+  /* Welcome */
+  .welcome {
+    background: white;
+    border-radius: var(--radius);
+    padding: 28px 28px;
+    margin-bottom: 24px;
+    border: 1px solid var(--gray-200);
+  }
+
+  .welcome h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 12px;
+  }
+
+  .welcome p {
+    font-size: 15px;
+    color: var(--gray-700);
+    margin-bottom: 8px;
+  }
+
+  /* Timeline */
+  .timeline {
+    position: relative;
+    padding-right: 0;
+  }
+
+  /* Step Card */
+  .step-card {
+    background: white;
+    border-radius: var(--radius);
+    margin-bottom: 20px;
+    border: 1px solid var(--gray-200);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .step-card:hover {
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+  }
+
+  .step-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--gray-100);
+  }
+
+  .step-number {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 800;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .step-title {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .step-subtitle {
+    font-size: 13px;
+    color: var(--gray-500);
+    font-weight: 400;
+  }
+
+  .step-body {
+    padding: 24px;
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+  }
+
+  .step-illustration {
+    flex-shrink: 0;
+    width: 120px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .step-content {
+    flex: 1;
+  }
+
+  .step-content p {
+    font-size: 15px;
+    color: var(--gray-700);
+    margin-bottom: 8px;
+  }
+
+  .step-content .highlight {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 14px;
+  }
+
+  /* Color variants */
+  .step-primary .step-number { background: var(--primary); }
+  .step-primary .step-title { color: var(--primary); }
+  .step-primary .highlight { background: var(--primary-light); color: var(--primary); }
+
+  .step-accent .step-number { background: var(--accent); }
+  .step-accent .step-title { color: #b45309; }
+  .step-accent .highlight { background: var(--accent-light); color: #b45309; }
+
+  .step-success .step-number { background: var(--success); }
+  .step-success .step-title { color: #047857; }
+  .step-success .highlight { background: var(--success-light); color: #047857; }
+
+  .step-purple .step-number { background: var(--purple); }
+  .step-purple .step-title { color: var(--purple); }
+  .step-purple .highlight { background: var(--purple-light); color: var(--purple); }
+
+  .step-rose .step-number { background: var(--rose); }
+  .step-rose .step-title { color: var(--rose); }
+  .step-rose .highlight { background: var(--rose-light); color: var(--rose); }
+
+  /* Checklist */
+  .checklist {
+    list-style: none;
+    margin-top: 12px;
+  }
+
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 6px 0;
+    font-size: 14px;
+    color: var(--gray-700);
+  }
+
+  .checklist li::before {
+    content: '✓';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    background: var(--success-light);
+    color: var(--success);
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* Warning box */
+  .warning {
+    background: var(--accent-light);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-top: 12px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .warning-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .warning p {
+    font-size: 14px;
+    color: #92400e;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  /* Notes section */
+  .notes {
+    background: white;
+    border-radius: var(--radius);
+    padding: 28px;
+    margin-top: 24px;
+    border: 2px solid var(--primary-light);
+  }
+
+  .notes h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 16px;
+  }
+
+  .notes ul {
+    list-style: none;
+  }
+
+  .notes ul li {
+    padding: 8px 0;
+    font-size: 14px;
+    color: var(--gray-700);
+    border-bottom: 1px solid var(--gray-100);
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .notes ul li:last-child { border-bottom: none; }
+
+  .notes .note-icon {
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* Flow arrow */
+  .flow-arrow {
+    text-align: center;
+    padding: 8px 0;
+    color: var(--gray-200);
+    font-size: 24px;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 24px;
+    color: var(--gray-500);
+    font-size: 13px;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .step-body { flex-direction: column; align-items: center; }
+    .step-illustration { width: 100px; }
+    .header h1 { font-size: 22px; }
+    body { padding: 12px; }
+  }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .step-card:hover { box-shadow: none; }
+    .header::before { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>دليل المشارك</h1>
+    <p>خطوات المشاركة في تجربة المنصة الهجينة للتغذية الراجعة</p>
+    <div class="badge">⏱ المدّة المتوقّعة: 7–10 أيام</div>
+  </div>
+
+  <!-- Welcome -->
+  <div class="welcome">
+    <h2>مرحباً بك 👋</h2>
+    <p>شكراً لمشاركتك في هذه الدراسة البحثية. ستستخدم منصة تُعطيك ملاحظات على تصاميمك وتساعدك على تحسينها.</p>
+    <p>لا يُشترط أن تكون متخصصاً في التصميم — المنصة مصمّمة خصيصاً لغير المختصين.</p>
+    <p>اتّبع الخطوات التالية بالترتيب، وإن واجهت أيّ سؤال تواصل مع الباحثة.</p>
+  </div>
+
+  <!-- STEP 1 -->
+  <div class="step-card step-primary">
+    <div class="step-header">
+      <div class="step-number">١</div>
+      <div>
+        <div class="step-title">القياس القبلي — صمّم تصميمَين</div>
+        <div class="step-subtitle">قبل البدء بالمنصة</div>
+      </div>
+    </div>
+    <div class="step-body">
+      <div class="step-illustration">
+        <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
+          <rect x="10" y="15" width="35" height="45" rx="4" fill="#e8f0fe" stroke="#1a56db" stroke-width="2"/>
+          <rect x="16" y="22" width="23" height="4" rx="2" fill="#1a56db" opacity="0.4"/>
+          <rect x="16" y="30" width="18" height="4" rx="2" fill="#1a56db" opacity="0.3"/>
+          <rect x="16" y="38" width="23" height="12" rx="2" fill="#1a56db" opacity="0.15"/>
+          <rect x="55" y="15" width="35" height="45" rx="4" fill="#e8f0fe" stroke="#1a56db" stroke-width="2"/>
+          <rect x="61" y="22" width="23" height="4" rx="2" fill="#1a56db" opacity="0.4"/>
+          <rect x="61" y="30" width="18" height="4" rx="2" fill="#1a56db" opacity="0.3"/>
+          <rect x="61" y="38" width="23" height="12" rx="2" fill="#1a56db" opacity="0.15"/>
+          <text x="50" y="82" text-anchor="middle" font-family="Tajawal" font-size="11" fill="#1a56db" font-weight="700">تصميمان</text>
+          <circle cx="28" cy="70" r="8" fill="#1a56db" opacity="0.1"/>
+          <text x="28" y="73" text-anchor="middle" font-family="Tajawal" font-size="10" fill="#1a56db" font-weight="700">١</text>
+          <circle cx="73" cy="70" r="8" fill="#1a56db" opacity="0.1"/>
+          <text x="73" y="73" text-anchor="middle" font-family="Tajawal" font-size="10" fill="#1a56db" font-weight="700">٢</text>
+        </svg>
+      </div>
+      <div class="step-content">
+        <p>صمّم <span class="highlight">منشورَين لوسائل التواصل الاجتماعي</span> بالمواصفات التي ستصلك من الباحثة (الموضوع، الحجم، الجمهور).</p>
+        <p>صمّم بمفردك تماماً — بأيّ أداة تريد (Canva، Adobe، أو غيرها).</p>
+        <div class="warning">
+          <div class="warning-icon">⚠️</div>
+          <p>لا تستخدم المنصة في هذه المرحلة. الهدف هو معرفة مستواك الحالي قبل أيّ تدخّل.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flow-arrow">⬇</div>
+
+  <!-- STEP 2 -->
+  <div class="step-card step-accent">
+    <div class="step-header">
+      <div class="step-number">٢</div>
+      <div>
+        <div class="step-title">الجلسة الأولى — ارفع تصميمك الأول</div>
+        <div class="step-subtitle">على المنصة</div>
+      </div>
+    </div>
+    <div class="step-body">
+      <div class="step-illustration">
+        <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
+          <rect x="15" y="10" width="70" height="50" rx="6" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+          <path d="M50 25 L58 37 H42 Z" fill="#f59e0b" opacity="0.6"/>
+          <text x="50" y="50" text-anchor="middle" font-family="Tajawal" font-size="9" fill="#92400e" font-weight="500">رفع التصميم ١</text>
+          <path d="M50 65 L50 78" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4 3"/>
+          <path d="M44 74 L50 80 L56 74" stroke="#f59e0b" stroke-width="2" fill="none"/>
+          <rect x="25" y="82" width="50" height="14" rx="4" fill="#f59e0b" opacity="0.15"/>
+          <text x="50" y="92" text-anchor="middle" font-family="Tajawal" font-size="9" fill="#92400e" font-weight="600">تغذية راجعة ✨</text>
+        </svg>
+      </div>
+      <div class="step-content">
+        <p>ارفع <span class="highlight">تصميمك الأول</span> (من الخطوة السابقة) على المنصة.</p>
+        <p>ستتلقّى <span class="highlight">تغذية راجعة</span> — ملاحظات وتوصيات على تصميمك.</p>
+        <p>اقرأ الملاحظات جيّداً واستوعبها.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="flow-arrow">⬇</div>
+
+  <!-- STEP 3 -->
+  <div class="step-card step-success">
+    <div class="step-header">
+      <div class="step-number">٣</div>
+      <div>
+        <div class="step-title">حسّن تصميمك الأول</div>
+        <div class="step-subtitle">خارج المنصة — بمفردك</div>
+      </div>
+    </div>
+    <div class="step-body">
+      <div class="step-illustration">
+        <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
+          <rect x="15" y="15" width="35" height="45" rx="4" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <text x="33" y="42" text-anchor="middle" font-family="Tajawal" font-size="9" fill="#9ca3af" font-weight="500">الأصلي</text>
+          <path d="M55 38 L62 38" stroke="#10b981" stroke-width="2.5"/>
+          <path d="M59 34 L63 38 L59 42" stroke="#10b981" stroke-width="2" fill="none"/>
+          <rect x="50" y="15" width="35" height="45" rx="4" fill="#d1fae5" stroke="#10b981" stroke-width="2"/>
+          <text x="68" y="35" text-anchor="middle" font-family="Tajawal" font-size="9" fill="#047857" font-weight="700">محسَّن ✓</text>
+          <text x="68" y="48" text-anchor="middle" font-family="Tajawal" font-size="8" fill="#047857" opacity="0.6">أرسله للباحثة</text>
+          <rect x="20" y="70" width="60" height="20" rx="6" fill="#d1fae5"/>
+          <text x="50" y="83" text-anchor="middle" font-family="Tajawal" font-size="10" fill="#047857" font-weight="600">بمفردك 🙋</text>
+        </svg>
+      </div>
+      <div class="step-content">
+        <p>بناءً على الملاحظات التي تلقّيتها، <span class="highlight">حسّن تصميمك الأول</span> بمفردك.</p>
+        <ul class="checklist">
+          <li>حسّن خارج المنصة — بأيّ أداة تصميم تريد</li>
+          <li>لا تستخدم المنصة أثناء التحسين</li>
+          <li>أرسل النسخة المحسَّنة إلى الباحثة</li>
+          <li>احتفظ بالنسخة الأصلية كما هي</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="flow-arrow">⬇</div>
+
+  <!-- STEP 4 -->
+  <div class="step-card step-accent">
+    <div class="step-header">
+      <div class="step-number">٤</div>
+      <div>
+        <div class="step-title">الجلسة الثانية — كرّر مع التصميم الثاني</div>
+        <div class="step-subtitle">نفس الخطوات</div>
+      </div>
+    </div>
+    <div class="step-body">
+      <div class="step-illustration">
+        <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
+          <circle cx="50" cy="45" r="30" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+          <path d="M38 40 Q50 25 62 40" stroke="#f59e0b" stroke-width="2" fill="none"/>
+          <path d="M60 37 L63 41 L58 42" stroke="#f59e0b" stroke-width="1.5" fill="none"/>
+          <text x="50" y="50" text-anchor="middle" font-family="Tajawal" font-size="10" fill="#92400e" font-weight="700">تكرار</text>
+          <text x="50" y="62" text-anchor="middle" font-family="Tajawal" font-size="8" fill="#92400e" opacity="0.7">التصميم ٢</text>
+          <text x="50" y="88" text-anchor="middle" font-family="Tajawal" font-size="10" fill="#92400e" font-weight="500">ارفع → ملاحظات → حسّن → أرسل</text>
+        </svg>
+      </div>
+      <div class="step-content">
+        <p>كرّر نفس ما فعلته في الخطوتين ٢ و٣ ولكن مع <span class="highlight">تصميمك الثاني</span>:</p>
+        <ul class="checklist">
+          <li>ارفع التصميم الثاني على المنصة</li>
+          <li>تلقَّ التغذية الراجعة</li>
+          <li>حسّنه خارج المنصة بمفردك</li>
+          <li>أرسل النسخة المحسَّنة إلى الباحثة</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="flow-arrow">⬇</div>
+
+  <!-- STEP 5 -->
+  <div class="step-card step-purple">
+    <div class="step-header">
+      <div class="step-number">٥</div>
+      <div>
+        <div class="step-title">الجلسة الثالثة — تصميم جديد كلّياً</div>
+        <div class="step-subtitle">في الأيام الأخيرة</div>
+      </div>
+    </div>
+    <div class="step-body">
+      <div class="step-illustration">
+        <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
+          <rect x="20" y="12" width="60" height="50" rx="6" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+          <text x="50" y="32" text-anchor="middle" font-size="24">🌟</text>
+          <text x="50" y="50" text-anchor="middle" font-family="Tajawal" font-size="10" fill="#7c3aed" font-weight="700">تصميم جديد!</text>
+          <rect x="25" y="72" width="50" height="18" rx="6" fill="#7c3aed" opacity="0.1"/>
+          <text x="50" y="84" text-anchor="middle" font-family="Tajawal" font-size="9" fill="#7c3aed" font-weight="600">أظهر ما تعلّمته 💪</text>
+        </svg>
+      </div>
+      <div class="step-content">
+        <p>صمّم <span class="highlight">منشوراً جديداً كلّياً</span> — مختلف عن تصميمَيك السابقَين — وارفعه على المنصة.</p>
+        <p>هذا التصميم يُظهر مستواك العامّ بعد كل ما تعلّمته من الجلسات السابقة.</p>
+        <p>ستتلقّى تغذية راجعة عليه كالعادة، لكن <span class="highlight">لا يُطلب منك تحسينه</span>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="flow-arrow">⬇</div>
+
+  <!-- STEP 6 -->
+  <div class="step-card step-rose">
+    <div class="step-header">
+      <div class="step-number">٦</div>
+      <div>
+        <div class="step-title">استبانة قصيرة</div>
+        <div class="step-subtitle">في نهاية التجربة</div>
+      </div>
+    </div>
+    <div class="step-body">
+      <div class="step-illustration">
+        <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
+          <rect x="22" y="15" width="56" height="60" rx="6" fill="#ffe4e6" stroke="#f43f5e" stroke-width="1.5"/>
+          <rect x="30" y="26" width="28" height="3" rx="1.5" fill="#f43f5e" opacity="0.3"/>
+          <circle cx="68" cy="27" r="5" fill="#f43f5e" opacity="0.15" stroke="#f43f5e" stroke-width="1"/>
+          <rect x="30" y="36" width="28" height="3" rx="1.5" fill="#f43f5e" opacity="0.3"/>
+          <circle cx="68" cy="37" r="5" fill="#f43f5e" opacity="0.15" stroke="#f43f5e" stroke-width="1"/>
+          <rect x="30" y="46" width="28" height="3" rx="1.5" fill="#f43f5e" opacity="0.3"/>
+          <circle cx="68" cy="47" r="5" fill="#f43f5e" opacity="0.4" stroke="#f43f5e" stroke-width="1"/>
+          <text x="68" y="50" text-anchor="middle" font-size="6" fill="#f43f5e">✓</text>
+          <rect x="30" y="56" width="28" height="3" rx="1.5" fill="#f43f5e" opacity="0.3"/>
+          <circle cx="68" cy="57" r="5" fill="#f43f5e" opacity="0.15" stroke="#f43f5e" stroke-width="1"/>
+          <text x="50" y="90" text-anchor="middle" font-family="Tajawal" font-size="10" fill="#f43f5e" font-weight="500">دقائق معدودة ⏱</text>
+        </svg>
+      </div>
+      <div class="step-content">
+        <p>في ختام التجربة، قد يُطلب منك تعبئة <span class="highlight">استبانة قصيرة</span> عن تجربتك مع المنصة.</p>
+        <p>لا تستغرق أكثر من بضع دقائق.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notes -->
+  <div class="notes">
+    <h2>📌 ملاحظات مهمّة</h2>
+    <ul>
+      <li>
+        <span class="note-icon">🔒</span>
+        <span>جميع بياناتك وتصاميمك <strong>سرّية</strong> ولن تُستخدم إلا لأغراض البحث العلمي فقط.</span>
+      </li>
+      <li>
+        <span class="note-icon">🎨</span>
+        <span>لا يوجد تصميم «صحيح» أو «خاطئ» — المطلوب منك التصميم بأفضل ما عندك في كل مرحلة.</span>
+      </li>
+      <li>
+        <span class="note-icon">🚫</span>
+        <span>لا تُشارك تجربتك أو ملاحظات المنصة مع مشاركين آخرين أثناء فترة التجربة.</span>
+      </li>
+      <li>
+        <span class="note-icon">📱</span>
+        <span>يمكنك استخدام أيّ أداة تصميم مريحة لك (Canva، Adobe Express، أو غيرها).</span>
+      </li>
+      <li>
+        <span class="note-icon">📊</span>
+        <span>بعد انتهاء الدراسة، ستصلك نتيجتك ومستوى تطوّرك — كهدية شكر على مشاركتك.</span>
+      </li>
+      <li>
+        <span class="note-icon">❓</span>
+        <span>لأيّ سؤال أو استفسار، تواصل مع الباحثة مباشرةً.</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>شكراً لمشاركتك — مساهمتك تصنع فرقاً حقيقياً في هذا البحث 🙏</p>
+    <p style="margin-top: 4px; font-size: 12px; opacity: 0.6;">جامعة جدة — كلية التصاميم والفنون — 2026م</p>
+  </div>
+
+</div>
+</body>
+</html>
